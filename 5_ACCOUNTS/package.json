@@ -1,0 +1,16 @@
+{
+  "name": "5_accounts",
+  "version": "1.0.0",
+  "description": "Programa de contas bancarias",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs"
+  },
+  "author": "Pedro",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.4"
+  }
+}
