@@ -6,6 +6,7 @@ import consultarSaldo from "./consultarSaldo.mjs";
 // Modulos internos
 import criarConta from "./criarConta.mjs";
 import depositar from "./depositar.mjs";
+import sacar from "./sacar.mjs";
 
 operation()
 
@@ -41,6 +42,8 @@ function operation(){
             depositar()
 
         } else if(action === 'Sacar'){
+
+            sacar()
 
         } else if(action === 'Sair'){
             console.log(
