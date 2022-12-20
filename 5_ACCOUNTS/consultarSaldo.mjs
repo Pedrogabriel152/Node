@@ -26,6 +26,8 @@ function consultarSaldo(){
 
             operation()
 
+        } else {
+            return consultarSaldo()
         }
     })
     .catch(err => console.log(err))

@@ -35,10 +35,8 @@ function sacar(){
 
             const amount = resposta['amount']
 
-            // Adição do valor
+            // Remoção do valor
             retirarValor(accountName,amount)
-
-            operation()
 
         })
         .catch(err => console.log(err))
@@ -63,10 +61,10 @@ function retirarValor(accountName,amount){
             chalk.bgRed.black.bold('Saldo insuficiente!')
         )
         console.log(
-            chalk.bgBlue.black.bold(`saldo dispomivel é de R$${accountData.balance}`)
+            chalk.bgBlue.black.bold(`saldo disponivel é de R$${accountData.balance}`)
         )
 
-        return
+        return sacar()
     }
 
     accountData.balance = parseFloat(accountData.balance) - parseFloat(amount)
