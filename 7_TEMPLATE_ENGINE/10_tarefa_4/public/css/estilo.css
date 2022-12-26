@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    background-color: aqua;
+    height: 50px;
+    color: black;
+    font-size: 1.5em;
+    justify-content: space-around;
+}
+
+.link div{
+    text-align: center;
+    background-color: aqua;
+}
+
+.link div a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    
+}
+
+.link div a:hover{
+    color: black;
+}
+
+#rodape{
+    position: fixed;
+    height: 50px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5em;
+    top: 91.5%;
+    height: 56px;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    height: 84.5vh;
+    background-color: rgb(30, 109, 109);
+    text-align: center;
+    justify-content: center;
+}
+
+.boasvindas{
+    font-size: 2em;
+}
+
+.produtos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(30, 109, 109);
+}
+
+.produto{
+    height: 28.16vh;
+}
