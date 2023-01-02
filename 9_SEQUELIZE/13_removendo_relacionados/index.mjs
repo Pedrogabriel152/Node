@@ -149,6 +149,21 @@ app.get('/', function (req, res) {
 
   })
 
+  app.post('/address/delete', (req, res) =>{
+
+    const UserId = req.body.UserId
+    const id = req.body.id
+
+    Addres.destroy({
+      where: { id: id }
+    })
+    .then(() => {
+
+      res.redirect(`/users/edit/${UserId}`)
+    })
+
+  })
+
 conn.sync()
 .then(() => {
     app.listen(3000, () => console.log("App rodando"))
