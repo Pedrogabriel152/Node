@@ -29,6 +29,16 @@ class TaskController{
         res.render('tasks/all', { tasks })
     }
 
+    static removeTask(req, res){
+
+        const id = req.body.id
+
+        Task.destroy( { where: { id: id } })
+        .then(() => res.redirect('/tasks'))
+        .catch(err => console.log(err))
+        
+    }
+
 }
 
 export default TaskController

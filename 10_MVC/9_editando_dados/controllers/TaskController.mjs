@@ -29,6 +29,25 @@ class TaskController{
         res.render('tasks/all', { tasks })
     }
 
+    static removeTask(req, res){
+
+        const id = req.body.id
+
+        Task.destroy( { where: { id: id } })
+        .then(() => res.redirect('/tasks'))
+        .catch(err => console.log(err))
+        
+    }
+
+    static async updateTask(req, res){
+
+        const id = req.params.id
+
+        const task = await Task.findOne({raw: true, where: { id: id } })
+
+        res.render('tasks/edit', { task })
+    }
+
 }
 
 export default TaskController
