@@ -9,6 +9,7 @@ import os from "os"
 
 // IMPORTES DE ROUTES
 import taughtsRoutes from "./routes/taughtsRoutes.mjs";
+import authRoutes from './routes/authRoutes.mjs'
 
 // IMPORTE CONTROLLER
 import ToughtController from "./controllers/ToughtController.mjs";
@@ -80,10 +81,11 @@ app.use((req, res, next) => {
 // ROUTES
 app.use('/taughts', taughtsRoutes)
 
+app.use('/', authRoutes)
+
 app.get('/', ToughtController.showToughts)
 
 conn.sync()
-// .sync( { force: true } )
 .then(() => {
     app.listen(3000, () => console.log("App rodando"))
 })
