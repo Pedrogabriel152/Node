@@ -10,6 +10,7 @@ import checkAuth from '../helpers/auth.mjs';
 router.get('/add', checkAuth, ToughtController.createTought)
 router.post('/add', checkAuth, ToughtController.createToughtPost)
 router.get('/edit/:id', checkAuth, ToughtController.edtiTought)
+router.post('/edit', checkAuth, ToughtController.edtiToughtPost)
 router.get('/dashboard', checkAuth, ToughtController.dashboard)
 router.post('/remove', checkAuth, ToughtController.remove)
 router.get('/', ToughtController.showToughts)

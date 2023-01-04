@@ -3,8 +3,15 @@ import User from "../models/User.mjs"
 
 class ToughtController{
 
-    static showToughts(req, res){
-        res.render('toughts/home')
+    static async showToughts(req, res){
+
+        const toughtsData = await Toughts.findAll({
+            include: User,
+        })
+
+        const toughts = toughtsData.map(result => result.get({ plain:true }))
+
+        res.render('toughts/home', { toughts })
     }
 
     static async dashboard(req, res){
@@ -87,7 +94,54 @@ class ToughtController{
 
     }
 
-    
+    static async edtiTought(req, res){
+
+        const id = req.params.id
+
+        const tought = await Toughts.findOne({ 
+            raw: true, 
+            where: { 
+                id: id 
+            } 
+        })
+
+        res.render('toughts/edit', { tought })
+
+    }
+
+    static async edtiToughtPost(req, res){
+
+        const { id, title } = req.body
+
+        let tought = await Toughts.findOne({raw: true, where: { id: id }})
+
+        if(!tought){
+            req.flash('message', 'Pensamento não encontrado!')
+
+            req.session.save(() => {
+
+                res.redirect('/toughts/dashboard')
+
+            })
+        }
+
+        tought = {
+            title
+        }
+
+        Toughts.update(tought, { where: { id: id } })
+        .then(() => {
+
+            req.flash('message', 'Pensamento atualizado com sucesso!')
+
+            req.session.save(() => {
+
+                res.redirect('/toughts/dashboard')
+
+            })
+        })
+        .catch(err => console.log(err))
+    }
 
 }
 
