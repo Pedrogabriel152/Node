@@ -79,7 +79,7 @@ app.use((req, res, next) => {
 })
 
 // ROUTES
-app.use('/taughts', taughtsRoutes)
+app.use('/toughts', taughtsRoutes)
 
 app.use('/', authRoutes)
 

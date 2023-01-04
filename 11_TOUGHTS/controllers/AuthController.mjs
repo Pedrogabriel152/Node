@@ -7,6 +7,45 @@ class AuthController{
         res.render('auth/login')
     }
 
+    static async loginPost(req, res){
+        
+        const { email, password } = req.body
+
+        // USUARIO EXISTE
+        const user = await User.findOne({where: { email: email }})
+
+        if(!user){
+            req.flash('message', 'Usuário não incontrado')
+            res.render('auth/login')
+            return
+        }
+
+        // CHECANDO A SENHA
+        const passwordMatch = bcrypt.compareSync(password, user.password)
+
+        if(!passwordMatch){
+            req.flash('message', 'Senha incorreta')
+            res.render('auth/login')
+            return
+        }
+
+        try{ 
+
+            // Inicializando a sessão
+            req.session.userid = user.id
+
+            req.flash('message', 'Logado com sucesso')
+
+            req.session.save(() => {
+                res.redirect('/')
+            })
+
+        } catch(err){
+            console.log(err)
+        }
+
+    }
+
     static register(req, res){
         res.render('auth/register')
     }
@@ -77,7 +116,7 @@ class AuthController{
         req.session.destroy()
         res.redirect('/login')
     }
-
+    
 }
 
 export default AuthController
