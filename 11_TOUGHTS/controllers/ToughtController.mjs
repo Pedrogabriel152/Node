@@ -36,7 +36,13 @@ class ToughtController{
             toughtsQty = false
         }
 
-        res.render('toughts/home', { toughts, search, toughtsQty })
+        if(order === 'DESC'){
+            order = 'new'
+        } else {
+            order = 'old'
+        }
+
+        res.render('toughts/home', { toughts, search, toughtsQty, order  })
     }
 
     static async dashboard(req, res){

@@ -81,6 +81,16 @@
     margin-bottom: .4em;
 }
 
+.toughts-container figcaption{
+    display: flex;
+}
+
 .toughts-container span{
     color: #f6982d;
+    margin-left: .4em;
+}
+
+.toughts-container .btn{
+    font-size: .8em;
+    margin-left: 1.7em;
 }
