@@ -35,15 +35,15 @@ class ProductController{
 
     }
 
-    // static async delete(req, res){
+    static async delete(req, res){
 
-    //     const id = req.params.id
+        const id = req.params.id
         
-    //     await Product.deleteProductById(id)
+        await Product.deleteOne({ _id: id })
 
-    //     res.redirect('/products')
+        res.redirect('/products')
 
-    // }
+    }
 
     static async editProduct(req, res){
 
