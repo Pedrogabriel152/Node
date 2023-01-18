@@ -25,15 +25,15 @@ class ProductController{
 
     }
 
-    // static async getProduct(req, res){
+    static async getProduct(req, res){
 
-    //     const id = req.params.id
+        const id = req.params.id
 
-    //     const product = await Product.getProductById(id)
+        const product = await Product.findById(id).lean()
 
-    //     res.render('product/product', { product })
+        res.render('product/product', { product })
 
-    // }
+    }
 
     // static async delete(req, res){
 
@@ -45,27 +45,27 @@ class ProductController{
 
     // }
 
-    // static async editProduct(req, res){
+    static async editProduct(req, res){
 
-    //     const id = req.params.id
+        const id = req.params.id
 
-    //     const product = await Product.getProductById(id)
+        const product = await Product.findById(id).lean()
 
-    //     res.render("product/edit", { product })
+        res.render("product/edit", { product })
 
-    // }
+    }
 
-    // static async editProductPost(req, res){
+    static async editProductPost(req, res){
 
-    //     const { id, name, image, price, description } = req.body
+        const { id, name, image, price, description } = req.body
 
-    //     const product = new Product(name, image, price, description)
+        const product = {name, image, price, description}
 
-    //     await product.update(id)
+        await Product.updateOne({ _id: id }, product)
 
-    //     res.redirect('/products')
+        res.redirect('/products')
 
-    // }
+    }
 
 }
 

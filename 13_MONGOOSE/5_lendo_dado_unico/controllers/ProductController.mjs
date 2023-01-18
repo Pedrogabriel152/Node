@@ -25,15 +25,15 @@ class ProductController{
 
     }
 
-    // static async getProduct(req, res){
+    static async getProduct(req, res){
 
-    //     const id = req.params.id
+        const id = req.params.id
 
-    //     const product = await Product.getProductById(id)
+        const product = await Product.findById(id).lean()
 
-    //     res.render('product/product', { product })
+        res.render('product/product', { product })
 
-    // }
+    }
 
     // static async delete(req, res){
 
